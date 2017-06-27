@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e9cf70f-b794-4070-bbd5-ada84a8cae3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../khsink/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/conf/hdfs.properties" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../khsink/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../khsink/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/HDFSClient.java" afterPath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/HDFSClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/Kafka2HDFS.java" afterPath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/Kafka2HDFS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/KafkaClient.java" afterPath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/KafkaClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/ReadSinkTask.java" afterPath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/ReadSinkTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/utils/PropertiesUtils.java" afterPath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/utils/PropertiesUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/conf/consumer.properties" afterPath="$PROJECT_DIR$/../khsink/src/main/java/com/sina/conf/khsink.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/../khsink/out/" />
     <ignored path="$PROJECT_DIR$/../khsink/target/" />
@@ -924,12 +916,20 @@
       <workItem from="1498439750538" duration="6457000" />
       <workItem from="1498448272724" duration="19581000" />
       <workItem from="1498526556898" duration="18945000" />
-      <workItem from="1498551106510" duration="6133000" />
+      <workItem from="1498551106510" duration="6255000" />
     </task>
+    <task id="LOCAL-00001" summary="modify some info">
+      <created>1498557654072</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1498557654072</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59170000" />
+    <option name="totallyTimeSpent" value="59292000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -981,15 +981,13 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="modify some info" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify some info" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/ReadSinkTask.java</url>
-          <line>31</line>
-          <properties />
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../khsink/src/main/java/com/sina/khsink/Kafka2HDFS.java</url>
           <line>35</line>
