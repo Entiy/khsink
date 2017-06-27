@@ -10,7 +10,7 @@ import java.util.Properties;
  */
 public class PropertiesUtils {
 
-    private static Properties properties;
+    public static Properties properties=null;
 
     public static Properties load(String filePath){
         properties = new Properties();

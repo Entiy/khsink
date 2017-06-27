@@ -8,6 +8,7 @@ import org.apache.hadoop.fs.Path;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.UUID;
 
 /**
  * Created by szq on 2017/6/26.
@@ -21,15 +22,16 @@ public class HDFSClient {
     private FileSystem fs=null;
     private FSDataOutputStream out=null;
     private String uri=null;
+    private String topic=null;
     public HDFSClient(){
         init();
     }
     public void init(){
         try {
-            PropertiesUtils.load("src/main/java/com/sina/conf/hdfs.properties");
             conf=new Configuration();
 //            conf.set("fs.default.name",PropertiesUtils.getString("fs.default.name"));
-            uri=PropertiesUtils.getString("write.dir");
+            topic=PropertiesUtils.getString("sink.topic");
+            uri=PropertiesUtils.getString("write.dir")+topic+ UUID.randomUUID();
             fs=FileSystem.get(URI.create(uri),conf);
             Path path=new Path(uri);
             out=fs.create(path);

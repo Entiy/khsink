@@ -31,10 +31,10 @@ public class KafkaClient {
         init();
     }
     public void init(){
-        props = PropertiesUtils.load("src/main/java/com/sina/conf/consumer.properties");
-        config = new ConsumerConfig(props);
-        consumer = Consumer.createJavaConsumerConnector(config);
-        topic=PropertiesUtils.getString("sink.topic");
+        this.props =PropertiesUtils.properties;
+        this.config = new ConsumerConfig(props);
+        this.consumer = Consumer.createJavaConsumerConnector(config);
+        this.topic=PropertiesUtils.getString("sink.topic");
     }
     public ConsumerIterator<String, String>  consume() {
 

@@ -4,6 +4,7 @@ import com.sun.org.apache.regexp.internal.RE;
 import kafka.consumer.ConsumerIterator;
 import kafka.message.MessageAndMetadata;
 
+import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 
 /**
@@ -17,7 +18,6 @@ public class ReadSinkTask implements Runnable {
     private BlockingQueue buffer=null;
     private KafkaClient kafkaClient=null;
     private ConsumerIterator<String, String> it=null;
-    private WriteSinkTask writeSinkTask=null;
 
     public ReadSinkTask(){
         this.kafkaClient=new KafkaClient();
@@ -38,9 +38,10 @@ public class ReadSinkTask implements Runnable {
                     String topic=messAndMeta.topic();
                     long offset=messAndMeta.offset();
                     int partition=messAndMeta.partition();
-                    buffer.put(message);
-                    String m="topic:"+topic+" key:"+key+" message:"+message+" offset:"+offset+" partition:"+partition;
-                    System.out.println("Pulling a message("+m+") from kafka and Putting it into buffer");
+                    String m="CurrentThread:"+Thread.currentThread().getName()+" topic:"+topic+" key:"+key+" message:"+message+" offset:"+offset+" partition:"+partition;
+                    buffer.put(m);
+                    System.out.println(m);
+                    System.out.println("Pulling a message("+message+") from kafka and Putting it into buffer");
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
