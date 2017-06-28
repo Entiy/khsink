@@ -22,10 +22,10 @@ public class Kafka2HDFS {
     }
     public void start() {
         init();
-//        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             readSinkTask=new ReadSinkTask(buffer);
-            new Thread(readSinkTask,"ThreadA").start();
-//        }
+            new Thread(readSinkTask,"Thread"+i).start();
+        }
         new Thread(writeSinkTask).start();
 
     }

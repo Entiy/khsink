@@ -31,7 +31,7 @@ public class HDFSClient {
             conf=new Configuration();
 //            conf.set("fs.default.name",PropertiesUtils.getString("fs.default.name"));
             topic=PropertiesUtils.getString("sink.topic");
-            uri=PropertiesUtils.getString("write.dir")+topic+ UUID.randomUUID();
+            uri=PropertiesUtils.getString("write.dir")+topic+"-"+ UUID.randomUUID();
             fs=FileSystem.get(URI.create(uri),conf);
             Path path=new Path(uri);
             out=fs.create(path);
