@@ -22,18 +22,16 @@ public class Kafka2HDFS {
     }
     public void start() {
         init();
-        for (int i = 0; i < 3; i++) {
-            readSinkTask=new ReadSinkTask(buffer);
-            new Thread(readSinkTask,"Thread"+i).start();
-        }
-        new Thread(writeSinkTask).start();
-
+        readSinkTask=new ReadSinkTask(buffer);
+        writeSinkTask =new WriteSinkTask(buffer);
+        readSinkTask.start();
+        writeSinkTask.start();
     }
 
     public void init(){
         PropertiesUtils.load("src/main/java/com/sina/conf/khsink.properties");
         buffer=new LinkedBlockingQueue();
-        writeSinkTask =new WriteSinkTask(buffer,false);
+//        writeSinkTask =new WriteSinkTask(buffer);
 //        readSinkTask=new ReadSinkTask(buffer);
     }
 }

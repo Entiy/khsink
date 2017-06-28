@@ -29,9 +29,7 @@ public class HDFSClient {
     public void init(){
         try {
             conf=new Configuration();
-//            conf.set("fs.default.name",PropertiesUtils.getString("fs.default.name"));
-            topic=PropertiesUtils.getString("sink.topic");
-            uri=PropertiesUtils.getString("write.dir")+topic+"-"+ UUID.randomUUID();
+            uri=tmpFileName();
             fs=FileSystem.get(URI.create(uri),conf);
             Path path=new Path(uri);
             out=fs.create(path);
@@ -47,8 +45,21 @@ public class HDFSClient {
         }
     }
 
-    public void rename(){
-        //todo
+    public void renameFile(String sourcePath, String targetPath){
+        try {
+            final Path srcPath = new Path(sourcePath);
+            final Path dstPath = new Path(targetPath);
+            if (fs.exists(srcPath)) {
+                System.out.println(fs.rename(srcPath,dstPath)?"Rename success":"Rename error");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public String tmpFileName(){
+        topic=PropertiesUtils.getString("sink.topic");
+        return PropertiesUtils.getString("write.dir")+topic+"_"+ UUID.randomUUID()+"_tmp";
     }
 
     public void recovery(){

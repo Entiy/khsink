@@ -14,41 +14,51 @@ import java.util.concurrent.BlockingQueue;
  *      1.将数据写入到队列
  *      2.
  */
-public class ReadSinkTask implements Runnable {
+public class ReadSinkTask{
     private BlockingQueue buffer=null;
     private KafkaClient kafkaClient=null;
     private ConsumerIterator<String, String> it=null;
 
     public ReadSinkTask(){
-        this.kafkaClient=new KafkaClient();
     }
     public ReadSinkTask(BlockingQueue buffer) {
         this();
         this.buffer = buffer;
     }
 
-    public void run() {
-        if (buffer!=null){
-            it=kafkaClient.consume();
-            while (it.hasNext()){
-                try {
-                    MessageAndMetadata<String,String> messAndMeta=it.next();
-                    String message=messAndMeta.message();
-                    String key=messAndMeta.key();
-                    String topic=messAndMeta.topic();
-                    long offset=messAndMeta.offset();
-                    int partition=messAndMeta.partition();
-                    String m="CurrentThread:"+Thread.currentThread().getName()+" topic:"+topic+" key:"+key+" message:"+message+" offset:"+offset+" partition:"+partition;
-                    buffer.put(m);
-                    System.out.println(m);
-                    System.out.println("Pulling a message("+message+") from kafka and Putting it into buffer");
+    public void start(){
+        init();
+        new Thread(new ReadThread()).start();
+    }
+    public void init(){
+        this.kafkaClient=new KafkaClient();
+    }
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+
+    class ReadThread implements Runnable{
+        public void run() {
+            if (buffer!=null){
+                it=kafkaClient.consume();
+                while (it.hasNext()){
+                    try {
+                        MessageAndMetadata<String,String> messAndMeta=it.next();
+                        String message=messAndMeta.message();
+                        String key=messAndMeta.key();
+                        String topic=messAndMeta.topic();
+                        long offset=messAndMeta.offset();
+                        int partition=messAndMeta.partition();
+                        String m="CurrentThread:"+Thread.currentThread().getName()+" topic:"+topic+" key:"+key+" message:"+message+" offset:"+offset+" partition:"+partition;
+                        buffer.put(m);
+                        System.out.println(m);
+                        System.out.println("Pulling a message("+message+") from kafka and Putting it into buffer");
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 }
             }
         }
-    }
 
     public BlockingQueue getBuffer() {
         return buffer;
