@@ -8,6 +8,7 @@ import org.apache.hadoop.io.IOUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.InetAddress;
 import java.util.UUID;
 
@@ -46,12 +47,15 @@ public class HDFSClient {
             e.printStackTrace();
         }
     }
-    public void write2HDFS(byte bytes[]){
+    public void write2HDFS(FSDataOutputStream out,byte[] buf){
         try {
-            out.write(bytes,0,bytes.length);
+            out.write(buf, 0, buf.length);
+            flushAndCommitOffset();
+            System.out.println("Taking "+buf.length+" bytes from buffer and writing it into HDFS");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void renameFile(String sourcePath, String targetPath){

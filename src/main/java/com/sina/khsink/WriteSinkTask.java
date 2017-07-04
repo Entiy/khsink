@@ -51,7 +51,7 @@ public class WriteSinkTask {
                     try {
                         String message=(String)buffer.take();
                         message= (String) messageProcess.process(message);
-                        hdfsClient.write2HDFS(message.getBytes());
+                        //hdfsClient.write2HDFS(message.getBytes());
                         System.out.println("Taking a message(" +message.replaceAll("\n","")+ ") from buffer and writing it into HDFS");
                         if (++count>=flushSize){
                             total+=count;
