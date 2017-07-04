@@ -27,7 +27,7 @@ public class Producer {
         properties.put("request.required.acks", "1");
 
         KafkaProducer<Integer, String> producer = new KafkaProducer<Integer, String>(properties);
-        for (int iCount = 0; iCount < 100; iCount++) {
+        for (int iCount = 0; iCount < 200; iCount++) {
             String message = "My Test Message No " + iCount;
             ProducerRecord<Integer, String> record = new ProducerRecord<Integer, String>("sinktest", message);
             producer.send(record);

@@ -52,6 +52,10 @@ public class KafkaClient {
             consumer.shutdown();
     }
 
+    public void commitOffset(){
+        consumer.commitOffsets();
+    }
+
     public Properties getProps() {
         return props;
     }
@@ -83,4 +87,5 @@ public class KafkaClient {
     public void setTopic(String topic) {
         this.topic = topic;
     }
+
 }

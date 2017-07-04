@@ -2,12 +2,13 @@ package com.sina.khsink;
 
 import com.sina.utils.PropertiesUtils;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataOutputStream;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.*;
+import org.apache.hadoop.io.IOUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStreamReader;
+import java.net.InetAddress;
 import java.util.UUID;
 
 /**
@@ -20,19 +21,27 @@ import java.util.UUID;
 public class HDFSClient {
     private Configuration conf=null;
     private FileSystem fs=null;
+    private KafkaClient kafkaClient=null;
     private FSDataOutputStream out=null;
-    private String uri=null;
+    private String realFileNameURI=null;
     private String topic=null;
-    public HDFSClient(){
+    private String tmpFileNameURI=null;
+    private String writeDir=null;
+    private String ip=null;
+    public HDFSClient(KafkaClient kafkaClient){
+        this.kafkaClient=kafkaClient;
         init();
     }
     public void init(){
         try {
             conf=new Configuration();
-            uri=tmpFileName();
-            fs=FileSystem.get(URI.create(uri),conf);
-            Path path=new Path(uri);
-            out=fs.create(path);
+            conf.set("fs.default.name",PropertiesUtils.getString("hdfs.uri"));
+            writeDir=PropertiesUtils.getString("hdfs.uri")+PropertiesUtils.getString("write.dir");
+            topic=PropertiesUtils.getString("sink.topic");
+            tmpFileNameURI=getTmpFileNameURI();
+            realFileNameURI=getRealFileNameURI();
+            fs=FileSystem.get(conf);
+            recovery();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,13 +66,73 @@ public class HDFSClient {
         }
 
     }
-    public String tmpFileName(){
-        topic=PropertiesUtils.getString("sink.topic");
-        return PropertiesUtils.getString("write.dir")+topic+"_"+ UUID.randomUUID()+"_tmp";
+
+    public String getTmpFileNameURI(){
+        try {
+            ip = InetAddress.getLocalHost().getHostAddress().replaceAll("\\.","");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return writeDir+topic+"_"+ UUID.randomUUID().toString()+"_"+ip+"_tmp";
+    }
+
+    public String getRealFileNameURI(){
+        return "hdfs://10.210.136.61:8020/szq/sinkTest";
+    }
+
+    public void flush() {
+        try {
+            if (out!=null)
+                out.hflush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void flushAndCommitOffset(){
+        try {
+            if (out!=null){
+                out.hflush();
+                kafkaClient.commitOffset();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void recovery(){
-        //todo
+
+        long maxTmpFileSize=0;
+        Path maxTmpFilePath=null;
+        FileStatus[] statuses=getFileStatus(writeDir);
+        for (FileStatus file:statuses) {
+            if (file.getPath().getName().contains(ip)&&file.getLen()>maxTmpFileSize){
+                maxTmpFileSize=file.getLen();
+                maxTmpFilePath=file.getPath();
+            }
+        }
+        for (FileStatus file:statuses) {
+            if (!file.getPath().getName().equals(maxTmpFilePath.getName())){
+                delete(file.getPath());
+            }
+        }
+        try {
+            out=fs.create(new Path(tmpFileNameURI));
+            if (maxTmpFilePath!=null&&maxTmpFileSize!=0){
+                FSDataInputStream inputStream = fs.open(maxTmpFilePath);
+                IOUtils.copyBytes(inputStream,out,40960);
+                flush();
+                inputStream.close();
+                delete(maxTmpFilePath);
+            }
+        } catch (Exception e) {
+            System.exit(0);
+            e.printStackTrace();
+        }
+
+    }
+
+    public void commit(){
+        renameFile(tmpFileNameURI,realFileNameURI);
     }
 
     public void close(){
@@ -79,6 +148,28 @@ public class HDFSClient {
                 e.printStackTrace();
             }
     }
+
+    public FileStatus[] getFileStatus(String pathSrc){
+        FileStatus[] statuses=null;
+        try {
+            Path path=new Path(pathSrc);
+            statuses=fs.listStatus(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return statuses;
+    }
+
+    public void delete(Path path){
+        try {
+            if (fs.exists(path)){
+                fs.delete(path,false);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     public Configuration getConf() {
@@ -105,11 +196,35 @@ public class HDFSClient {
         this.out = out;
     }
 
-    public String getUri() {
-        return uri;
+    public void setRealFileNameURI(String realFileNameURI) {
+        this.realFileNameURI = realFileNameURI;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public void setTmpFileNameURI(String tmpFileNameURI) {
+        this.tmpFileNameURI = tmpFileNameURI;
+    }
+
+    public String getWriteDir() {
+        return writeDir;
+    }
+
+    public void setWriteDir(String writeDir) {
+        this.writeDir = writeDir;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

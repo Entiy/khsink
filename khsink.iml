@@ -84,15 +84,6 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.tukaani:xz:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-annotations:2.5.0-cdh5.3.2" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: jdk.tools:jdk.tools:1.6">
-        <CLASSES>
-          <root url="jar://G:/Java/JDK/lib/tools.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-archives:2.5.0-cdh5.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-assemblies:2.5.0-cdh5.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-auth:2.5.0-cdh5.3.2" level="project" />
