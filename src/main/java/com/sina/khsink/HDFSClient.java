@@ -105,18 +105,24 @@ public class HDFSClient {
 
     public void recovery(){
 
+        FileStatus[] statuses=getFileStatus(writeDir);
         long maxTmpFileSize=0;
         Path maxTmpFilePath=null;
-        FileStatus[] statuses=getFileStatus(writeDir);
-        for (FileStatus file:statuses) {
-            if (file.getPath().getName().contains(ip)&&file.getLen()>maxTmpFileSize){
-                maxTmpFileSize=file.getLen();
-                maxTmpFilePath=file.getPath();
-            }
-        }
-        for (FileStatus file:statuses) {
-            if (!file.getPath().getName().equals(maxTmpFilePath.getName())){
-                delete(file.getPath());
+        Path preMaxTmpFilePath=null;
+        if (statuses!=null&&statuses.length!=0){
+            maxTmpFileSize=statuses[0].getLen();
+            maxTmpFilePath=statuses[0].getPath();
+            preMaxTmpFilePath=maxTmpFilePath;
+            for (int i = 1; i <statuses.length ; i++) {
+                FileStatus file=statuses[i];
+                if (file.getPath().getName().contains(ip)&&file.getLen()>maxTmpFileSize){
+                    maxTmpFileSize=file.getLen();
+                    maxTmpFilePath=file.getPath();
+                    delete(preMaxTmpFilePath);
+                    preMaxTmpFilePath=maxTmpFilePath;
+                }
+                else if (file.getPath().getName().contains(ip))
+                    delete(file.getPath());
             }
         }
         try {
