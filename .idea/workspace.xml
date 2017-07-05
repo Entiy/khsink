@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3e9cf70f-b794-4070-bbd5-ada84a8cae3e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties" afterPath="$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/khsink/KafkaClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/sina/khsink/KafkaClient.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -920,7 +918,7 @@
       <workItem from="1498924177094" duration="716000" />
       <workItem from="1499044924957" duration="12846000" />
       <workItem from="1499134326417" duration="21725000" />
-      <workItem from="1499221149221" duration="1330000" />
+      <workItem from="1499221149221" duration="1352000" />
     </task>
     <task id="LOCAL-00001" summary="modify some info">
       <created>1498557654072</created>
@@ -957,11 +955,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499162359356</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modify some info">
+      <created>1499240092761</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1499240092761</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110653000" />
+    <option name="totallyTimeSpent" value="110675000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
