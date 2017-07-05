@@ -53,7 +53,7 @@ public class KafkaClient {
     }
 
     public void commitOffset(){
-        consumer.commitOffsets();
+        consumer.commitOffsets(false);
     }
 
     public Properties getProps() {
