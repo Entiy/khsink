@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.InetAddress;
+import java.nio.ByteBuffer;
 import java.util.UUID;
 
 /**
@@ -47,11 +48,11 @@ public class HDFSClient {
             e.printStackTrace();
         }
     }
-    public void write2HDFS(FSDataOutputStream out,byte[] buf){
+    public void write2HDFS(FSDataOutputStream out,byte[] buffer){
         try {
-            out.write(buf, 0, buf.length);
+            out.write(buffer, 0, buffer.length);
             flushAndCommitOffset();
-            System.out.println("Taking "+buf.length+" bytes from buffer and writing it into HDFS");
+            System.out.println("Taking "+buffer.length+" bytes from buffer and writing it into HDFS");
         } catch (IOException e) {
             e.printStackTrace();
         }

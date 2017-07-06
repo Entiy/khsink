@@ -1,10 +1,12 @@
 package com.sina.khsink;
 
+import com.sina.tools.ByteBuffer;
 import com.sina.tools.MessageProcess;
 import com.sina.tools.MessageProcessImpl;
 import com.sina.utils.PropertiesUtils;
 import kafka.consumer.ConsumerIterator;
 import kafka.message.MessageAndMetadata;
+
 
 /**
  * Created by qiangshizhi on 2017/7/4.
@@ -14,7 +16,7 @@ public class ReadWriteTask {
     private KafkaClient kafkaClient=null;
     private HDFSClient hdfsClient=null;
     private MessageProcess messageProcess=null;
-    private long flushSize;
+    private int flushSize;
     private long total;
     private int count=0;
 
@@ -26,7 +28,7 @@ public class ReadWriteTask {
         this.kafkaClient=new KafkaClient();
         this.hdfsClient=new HDFSClient(kafkaClient);
         this.messageProcess=new MessageProcessImpl();
-        this.flushSize= Long.parseLong(PropertiesUtils.getString("flush.size"));
+        this.flushSize= Integer.parseInt(PropertiesUtils.getString("flush.size"));
     }
 
     public void start(){
@@ -36,7 +38,7 @@ public class ReadWriteTask {
     public void readAndWrite(){
         ConsumerIterator<String, String> it=kafkaClient.consume();
         boolean running=true;
-        StringBuffer buffer=new StringBuffer();
+        ByteBuffer buffer= ByteBuffer.allocate(flushSize);
         while (it.hasNext()&&running){
                 try {
                     MessageAndMetadata<String,String> messAndMeta=it.next();
@@ -49,9 +51,18 @@ public class ReadWriteTask {
                     System.out.println(m);
                     System.out.println("Pulling a message("+message+") from kafka and Putting it into buffer");
                     message= (String) messageProcess.process(message);
-                    buffer.append(message);
-                    if (buffer.toString().getBytes().length>=flushSize)
-                        hdfsClient.write2HDFS(hdfsClient.getOut(),buffer.toString().getBytes());
+                    try {
+                        buffer.put(message.getBytes());
+                    }catch (IllegalArgumentException ex){
+                        hdfsClient.write2HDFS(hdfsClient.getOut(),buffer.array());
+                        buffer.clear();
+                        buffer.put(message.getBytes());
+                    }
+                    System.out.println("BufferSize: "+buffer.size());
+                    if (buffer.size()>=flushSize){
+                        hdfsClient.write2HDFS(hdfsClient.getOut(),buffer.array());
+                        buffer.clear();
+                    }
 //                    System.out.println("Taking a message(" +message.replaceAll("\n","")+ ") from buffer and writing it into HDFS");
 //                    if (++count>=flushSize){
 //                        total+=count;
