@@ -36,7 +36,7 @@ public class Kafka2HDFS {
 
     private ReadWriteTask readWriteTask=null;
     public static void main(String[] args) {
-        Producer.producer();
+     //   Producer.producer();
         new Kafka2HDFS().start();
     }
 
@@ -45,7 +45,8 @@ public class Kafka2HDFS {
         readWriteTask.start();
     }
     public void init(){
-        PropertiesUtils.load("src/main/java/com/sina/conf/khsink.properties");
+//        PropertiesUtils.load("src/main/java/com/sina/conf/khsink.properties");
+        PropertiesUtils.load();
         readWriteTask=new ReadWriteTask();
     }
 }

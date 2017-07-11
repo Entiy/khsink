@@ -2,6 +2,7 @@ package com.sina.utils;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -11,17 +12,30 @@ import java.util.Properties;
 public class PropertiesUtils {
 
     public static Properties properties=null;
+    private static final String FILEPATH="/khsink.properties";
 
-    public static Properties load(String filePath){
-        properties = new Properties();
+    public static void load(String filePath) {
+
+        properties=new Properties();
+        InputStream inputStream = PropertiesUtils.class.getResourceAsStream(filePath);
         try {
-            InputStream in =new BufferedInputStream(new FileInputStream(filePath));
-            properties.load(in);
-        } catch (Exception e) {
+            properties.load(inputStream);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return properties;
     }
+
+    public static void load() {
+
+        properties=new Properties();
+        InputStream inputStream = PropertiesUtils.class.getResourceAsStream(FILEPATH);
+        try {
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static String getString(String key){
         return properties.getProperty(key);

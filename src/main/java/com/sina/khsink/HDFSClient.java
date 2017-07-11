@@ -111,9 +111,6 @@ public class HDFSClient {
         Path maxTmpFilePath=null;
         Path preMaxTmpFilePath=null;
         if (statuses!=null&&statuses.length!=0){
-            maxTmpFileSize=statuses[0].getLen();
-            maxTmpFilePath=statuses[0].getPath();
-            preMaxTmpFilePath=maxTmpFilePath;
             for (int i = 1; i <statuses.length ; i++) {
                 FileStatus file=statuses[i];
                 if (file.getPath().getName().contains(ip)&&file.getLen()>maxTmpFileSize){
@@ -173,7 +170,7 @@ public class HDFSClient {
 
     public void delete(Path path){
         try {
-            if (fs.exists(path)){
+            if (path!=null&&fs.exists(path)){
                 fs.delete(path,false);
             }
         } catch (IOException e) {

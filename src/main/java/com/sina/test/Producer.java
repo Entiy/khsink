@@ -13,8 +13,8 @@ public class Producer {
     private boolean flag;
 
     public static void main(String[] args) {
-//        producer();
-        new Producer().run();
+        producer();
+//        new Producer().run();
     }
 
 
@@ -27,9 +27,9 @@ public class Producer {
         properties.put("request.required.acks", "1");
 
         KafkaProducer<Integer, String> producer = new KafkaProducer<Integer, String>(properties);
-        for (int iCount = 0; iCount < 200; iCount++) {
-            String message = "My Test Message No " + iCount;
-            ProducerRecord<Integer, String> record = new ProducerRecord<Integer, String>("sinktest", message);
+        for (int iCount = 0; iCount < 20000000; iCount++) {
+            String message = "message  " + iCount;
+            ProducerRecord<Integer, String> record = new ProducerRecord<Integer, String>("t001", message);
             producer.send(record);
         }
         producer.close();

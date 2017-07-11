@@ -63,20 +63,6 @@ public class ReadWriteTask {
                         hdfsClient.write2HDFS(hdfsClient.getOut(),buffer.array());
                         buffer.clear();
                     }
-//                    System.out.println("Taking a message(" +message.replaceAll("\n","")+ ") from buffer and writing it into HDFS");
-//                    if (++count>=flushSize){
-//                        total+=count;
-//                        hdfsClient.flushAndCommitOffset();
-//                        count=0;
-//                    }
-    //                if (total>=200){
-    //                    running=false;
-    //                    hdfsClient.flushAndCommitOffset();
-    //                    hdfsClient.commit();
-    //                    hdfsClient.close();
-    //                    kafkaClient.close();
-    //
-    //                }
 
                 } catch (Exception e) {
                     e.printStackTrace();
