@@ -47,9 +47,9 @@ public class ReadWriteTask {
                     String topic=messAndMeta.topic();
                     long offset=messAndMeta.offset();
                     int partition=messAndMeta.partition();
-                    String m="CurrentThread:"+Thread.currentThread().getName()+" topic:"+topic+" key:"+key+" message:"+message+" offset:"+offset+" partition:"+partition;
-                    System.out.println(m);
-                    System.out.println("Pulling a message("+message+") from kafka and Putting it into buffer");
+                    //String m="CurrentThread:"+Thread.currentThread().getName()+" topic:"+topic+" key:"+key+" message:"+message+" offset:"+offset+" partition:"+partition;
+                    //System.out.println(m);
+                    //System.out.println("Pulling a message("+message+") from kafka and Putting it into buffer");
                     message= (String) messageProcess.process(message);
                     try {
                         buffer.put(message.getBytes());

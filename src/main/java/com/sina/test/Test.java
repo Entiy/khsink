@@ -1,14 +1,12 @@
 package com.sina.test;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataInputStream;
-import org.apache.hadoop.fs.FileStatus;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 
 /**
@@ -33,7 +31,10 @@ public class Test {
 //        String ip = InetAddress.getLocalHost().getHostAddress();
 //        ip=ip.trim().replaceAll("\\.","");
 //        System.out.println(ip);
-        list();
+       //list();
+//        getPid();
+
+        System.out.println(existDir());
     }
 
     public  static  void list() throws IOException {
@@ -46,5 +47,25 @@ public class Test {
             System.out.println(file.getPath().getName());
 
         }
+    }
+
+    public static boolean existDir() throws IOException {
+        Configuration configuration=new Configuration();
+        configuration.set("fs.default.name","hdfs://10.210.136.61:8020");
+        FileSystem fs=FileSystem.get(configuration);
+        boolean flag= fs.exists(new Path("hdfs://10.210.136.61:8020/szq"));
+        if (flag){
+            FSDataOutputStream input=fs.create(new Path("hdfs://10.210.136.61:8020/szq1/sdad/dasda.txt"));
+            input.write("hello".getBytes());
+            input.close();
+        }
+        return  flag;
+    }
+    public static String getPid(){
+        String name = ManagementFactory.getRuntimeMXBean().getName();
+        System.out.println(name);
+        String pid = name.split("@")[0];
+        System.out.println("Pid"+pid);
+        return pid;
     }
 }
