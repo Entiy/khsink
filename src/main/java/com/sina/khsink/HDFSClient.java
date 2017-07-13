@@ -36,6 +36,8 @@ public class HDFSClient {
     private TimeZone timeZone=null;
     private String hdfsURI=null;
     private int currentMinTh=-1;
+    private String currentTmpFileName=null;
+    private String currentRealFileName=null;
     public HDFSClient(KafkaClient kafkaClient){
         this.kafkaClient=kafkaClient;
         init();
@@ -48,7 +50,7 @@ public class HDFSClient {
             timeZone =TimeZone.getTimeZone("Asia/Shanghai");
             ip=getIpAddress();
             pid=getPid();
-            category=PropertiesUtils.getString("category.dir");;
+            category=PropertiesUtils.getString("category.dir");
             conf=new Configuration();
             conf.set("fs.default.name",hdfsURI);
             fs=FileSystem.get(conf);
@@ -90,16 +92,13 @@ public class HDFSClient {
     public String getWriteDir(){
         return hdfsURI+getHadoopLogPath(category,true,timeZone)[0];
     }
-    public String getRealFileName(){
-        return getHadoopLogPath(category,true,timeZone)[1];
-    }
     public String getTmpFileNameURI(){
 
-        return getWriteDir()+"/"+getRealFileName()+"-tmp";
+        return getRealFileNameURI()+"-tmp";
     }
 
     public String getRealFileNameURI(){
-        return getWriteDir()+"/"+getRealFileName();
+        return getWriteDir()+"/"+getHadoopLogPath(category.split("/")[4],true,timeZone)[1];
     }
 
     public void flush() {
@@ -113,24 +112,16 @@ public class HDFSClient {
     public void flushAndCommitOffset(){
         try {
 
-            if (currentMinTh<getMinTh(timeZone)){
+            if (currentMinTh<getMinTh(timeZone)||currentMinTh>getMinTh(timeZone)){
                 out.close();
-                commit();
+                commit(currentTmpFileName,currentRealFileName);
                 kafkaClient.commitOffset();
-                if (fs.exists(new Path(tmpFileNameURI))){
-                    out=fs.create(new Path(tmpFileNameURI));
-                    currentMinTh=getMinTh(timeZone);
-                }
-            } else if (currentMinTh!=0&&getMinTh(timeZone)==0){
-                out.close();
-                commit();
-                kafkaClient.commitOffset();
-                if (!fs.exists(new Path(getWriteDir()))||!fs.exists(new Path(tmpFileNameURI))){
-                    out=fs.create(new Path(tmpFileNameURI));
-                    currentMinTh=getMinTh(timeZone);
-                }
-            }else{
-                out.hflush();
+                currentRealFileName=getRealFileNameURI();
+                currentTmpFileName=currentRealFileName+"-tmp";
+                out=fs.create(new Path(currentTmpFileName));
+                currentMinTh=getMinTh(timeZone);
+            } else{
+                flush();
                 kafkaClient.commitOffset();
             }
         } catch (Exception e) {
@@ -145,23 +136,22 @@ public class HDFSClient {
         Path maxTmpFilePath=null;
         Path preMaxTmpFilePath=null;
         if (statuses!=null&&statuses.length!=0){
-            for (int i = 1; i <statuses.length ; i++) {
+            for (int i = 0; i <statuses.length ; i++) {
                 FileStatus file=statuses[i];
                 if (file.getPath().getName().contains(ip)&&file.getPath().getName().contains("tmp")&&file.getLen()>maxTmpFileSize){
                     maxTmpFileSize=file.getLen();
                     maxTmpFilePath=file.getPath();
                     delete(preMaxTmpFilePath);
                     preMaxTmpFilePath=maxTmpFilePath;
-                }
-                else if (file.getPath().getName().contains(ip))
+                } else if (file.getPath().getName().contains(ip)&&file.getPath().getName().contains("tmp"))
                     delete(file.getPath());
             }
         }
         try {
-            if (!fs.exists(new Path(getWriteDir()))){
-                out=fs.create(new Path(getTmpFileNameURI()));
-                currentMinTh=getMinTh(timeZone);
-            }
+            currentRealFileName=getRealFileNameURI();
+            currentTmpFileName=currentRealFileName+"-tmp";
+            currentMinTh=getMinTh(timeZone);
+            out=fs.create(new Path(currentTmpFileName));
             if (maxTmpFilePath!=null&&maxTmpFileSize!=0){
                 FSDataInputStream inputStream = fs.open(maxTmpFilePath);
                 IOUtils.copyBytes(inputStream,out,40960);
@@ -176,7 +166,7 @@ public class HDFSClient {
 
     }
 
-    public void commit(){
+    public void commit(String tmpFileNameURI,String realFileNameURI){
         renameFile(tmpFileNameURI,realFileNameURI);
     }
 
@@ -198,7 +188,8 @@ public class HDFSClient {
         FileStatus[] statuses=null;
         try {
             Path path=new Path(pathSrc);
-            statuses=fs.listStatus(path);
+            if (fs.exists(path))
+                statuses=fs.listStatus(path);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -261,10 +252,10 @@ public class HDFSClient {
         StringBuilder realFileName = new StringBuilder();
 
         realPath.append(category);
-        if ( !category.endsWith("/") ) {
+        if (!category.endsWith("/") ) {
             realPath.append("/");
         }
-        realPath.append("/").append(year);
+        realPath.append(year);
         realPath.append("_").append(month);
         realPath.append("_").append(day);
         realPath.append("/").append(hour);
@@ -273,8 +264,8 @@ public class HDFSClient {
 
 
         realFileName.append(category).append("-")
-                .append(getIpAddress()).append("-")
-                .append(getPid()).append("-")
+                .append(ip).append("-")
+                .append(pid).append("-")
                 .append(year).append("_")
                 .append(month).append("_")
                 .append(day).append("_")
@@ -292,7 +283,7 @@ public class HDFSClient {
         }else{
             calendar = Calendar.getInstance(timeZone);
         }
-        int minTh= calendar.get(Calendar.MINUTE)/5+calendar.get(Calendar.HOUR_OF_DAY)*12;
+        int minTh= calendar.get(Calendar.MINUTE)/10+calendar.get(Calendar.HOUR_OF_DAY)*6;
         return minTh;
     }
 

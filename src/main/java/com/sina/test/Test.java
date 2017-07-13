@@ -2,6 +2,8 @@ package com.sina.test;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.fs.permission.FsAction;
+import org.apache.hadoop.fs.permission.FsPermission;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,8 +35,7 @@ public class Test {
 //        System.out.println(ip);
        //list();
 //        getPid();
-
-        System.out.println(existDir());
+        existDir();
     }
 
     public  static  void list() throws IOException {
@@ -49,17 +50,19 @@ public class Test {
         }
     }
 
-    public static boolean existDir() throws IOException {
+    public static void existDir() throws IOException {
         Configuration configuration=new Configuration();
         configuration.set("fs.default.name","hdfs://10.210.136.61:8020");
         FileSystem fs=FileSystem.get(configuration);
-        boolean flag= fs.exists(new Path("hdfs://10.210.136.61:8020/szq"));
-        if (flag){
+        FsPermission filePermission = null;
+        filePermission = new FsPermission(
+                FsAction.ALL, //user action
+                FsAction.ALL, //group action
+                FsAction.READ);//other action
             FSDataOutputStream input=fs.create(new Path("hdfs://10.210.136.61:8020/szq1/sdad/dasda.txt"));
             input.write("hello".getBytes());
             input.close();
-        }
-        return  flag;
+
     }
     public static String getPid(){
         String name = ManagementFactory.getRuntimeMXBean().getName();

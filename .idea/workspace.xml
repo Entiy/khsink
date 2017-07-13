@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e9cf70f-b794-4070-bbd5-ada84a8cae3e" name="Default" comment="">
+    <list default="true" id="3e9cf70f-b794-4070-bbd5-ada84a8cae3e" name="Default" comment="modify some info">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties" afterPath="$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/khsink/HDFSClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/sina/khsink/HDFSClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadWriteTask.java" afterPath="$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadWriteTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/khsink/WriteSinkTask.java" afterPath="$PROJECT_DIR$/src/main/java/com/sina/khsink/WriteSinkTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/test/Test.java" afterPath="$PROJECT_DIR$/src/main/java/com/sina/test/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sina/tools/ByteBuffer.java" afterPath="$PROJECT_DIR$/src/main/java/com/sina/tools/ByteBuffer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/khsink.properties" afterPath="$PROJECT_DIR$/src/main/resources/khsink.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,8 +39,8 @@
       <file leaf-file-name="Kafka2HDFS.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/Kafka2HDFS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="49" column="36" lean-forward="false" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+            <state relative-caret-position="242">
+              <caret line="47" column="53" lean-forward="false" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -45,120 +49,68 @@
       <file leaf-file-name="ReadWriteTask.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadWriteTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="38" column="60" lean-forward="false" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+            <state relative-caret-position="-190">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HDFSClient.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/HDFSClient.java">
+      <file leaf-file-name="ByteBuffer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/tools/ByteBuffer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="973">
-              <caret line="288" column="33" lean-forward="false" selection-start-line="288" selection-start-column="33" selection-end-line="288" selection-end-column="33" />
-              <folding>
-                <element signature="e#2642#2643#0" expanded="true" />
-                <element signature="e#2716#2717#0" expanded="true" />
-                <element signature="e#2753#2754#0" expanded="true" />
-                <element signature="e#2819#2820#0" expanded="true" />
-                <element signature="e#2965#2966#0" expanded="true" />
-                <element signature="e#3023#3024#0" expanded="true" />
-                <element signature="e#5638#5639#0" expanded="true" />
-                <element signature="e#5696#5697#0" expanded="true" />
-                <element signature="e#10134#10135#0" expanded="true" />
-                <element signature="e#10161#10162#0" expanded="true" />
-                <element signature="e#10208#10209#0" expanded="true" />
-                <element signature="e#10240#10241#0" expanded="true" />
-                <element signature="e#10273#10274#0" expanded="true" />
-                <element signature="e#10298#10299#0" expanded="true" />
-                <element signature="e#10338#10339#0" expanded="true" />
-                <element signature="e#10366#10367#0" expanded="true" />
-                <element signature="e#10409#10410#0" expanded="true" />
-                <element signature="e#10443#10444#0" expanded="true" />
-                <element signature="e#10502#10503#0" expanded="true" />
-                <element signature="e#10548#10549#0" expanded="true" />
-                <element signature="e#10590#10591#0" expanded="true" />
-                <element signature="e#10616#10617#0" expanded="true" />
-                <element signature="e#10666#10667#0" expanded="true" />
-                <element signature="e#10696#10697#0" expanded="true" />
-                <element signature="e#10758#10759#0" expanded="true" />
-                <element signature="e#10812#10813#0" expanded="true" />
-                <element signature="e#10844#10845#0" expanded="true" />
-                <element signature="e#10872#10873#0" expanded="true" />
-                <element signature="e#10914#10915#0" expanded="true" />
-                <element signature="e#10948#10949#0" expanded="true" />
-                <element signature="e#11008#11009#0" expanded="true" />
-                <element signature="e#11060#11061#0" expanded="true" />
-                <element signature="e#11089#11090#0" expanded="true" />
-                <element signature="e#11114#11115#0" expanded="true" />
-                <element signature="e#11150#11151#0" expanded="true" />
-                <element signature="e#11178#11179#0" expanded="true" />
-                <element signature="e#11213#11214#0" expanded="true" />
-                <element signature="e#11244#11245#0" expanded="true" />
-                <element signature="e#11292#11293#0" expanded="true" />
-                <element signature="e#11332#11333#0" expanded="true" />
-                <element signature="e#11370#11371#0" expanded="true" />
-                <element signature="e#11400#11401#0" expanded="true" />
-                <element signature="e#11437#11438#0" expanded="true" />
-                <element signature="e#11468#11469#0" expanded="true" />
-                <element signature="e#11518#11519#0" expanded="true" />
-                <element signature="e#11558#11559#0" expanded="true" />
-                <element signature="e#11592#11593#0" expanded="true" />
-                <element signature="e#11622#11623#0" expanded="true" />
-                <element signature="e#11668#11669#0" expanded="true" />
-                <element signature="e#11706#11707#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WriteSinkTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/WriteSinkTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+            <state relative-caret-position="722">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="khsink.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/khsink.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="68" lean-forward="false" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+              <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KafkaClient.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HDFSClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/HDFSClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1187">
+              <caret line="137" column="48" lean-forward="false" selection-start-line="137" selection-start-column="48" selection-end-line="137" selection-end-column="48" />
+              <folding>
+                <element signature="e#2730#2731#0" expanded="true" />
+                <element signature="e#2804#2805#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KafkaClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/KafkaClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="-439">
+              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1750#1751#0" expanded="true" />
+                <element signature="e#1795#1796#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Producer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/test/Producer.java">
+      <file leaf-file-name="PropertiesUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/utils/PropertiesUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/test/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="55" column="71" lean-forward="true" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
-              <folding />
+            <state relative-caret-position="521">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <element signature="e#1077#1078#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,18 +118,28 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="42" selection-end-column="17" />
+            <state relative-caret-position="981">
+              <caret line="108" column="14" lean-forward="true" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConsumerConnector.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.11/0.8.2.1/kafka_2.11-0.8.2.1.jar!/kafka/javaapi/consumer/ConsumerConnector.class">
+      <file leaf-file-name="WriteSinkTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/WriteSinkTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+            <state relative-caret-position="-131">
+              <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReadSinkTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadSinkTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10">
+              <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -219,18 +181,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sina/conf/consumer.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadSinkTask.java" />
         <option value="$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.11/0.8.2.1/kafka_2.11-0.8.2.1.jar!/kafka/javaapi/consumer/ConsumerConnector.class" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/WriteSinkTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sina/tools/ByteBuffer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/Kafka2HDFS.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sina/utils/PropertiesUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/KafkaClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sina/test/Producer.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/khsink.properties" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadWriteTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sina/test/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/WriteSinkTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/khsink.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/HDFSClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sina/tools/ByteBuffer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadWriteTask.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -316,22 +278,18 @@
     <panes>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane">
+      <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="khsink" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="khsink" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="khsink" />
@@ -353,6 +311,18 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="khsink" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -431,6 +401,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -526,15 +500,29 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="khsink" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="khsink" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.43678162" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
   </component>
   <component name="RecentsManager">
@@ -556,7 +544,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test (1)">
+  <component name="RunManager" selected="Application.Kafka2HDFS">
     <configuration default="false" name="Kafka2HDFS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1132,9 +1120,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Test (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Application.HDFSClient" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Kafka2HDFS" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Kafka2HDFS" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Test (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Application.HDFSClient" />
         <item index="3" class="java.lang.String" itemvalue="Application.Producer" />
         <item index="4" class="java.lang.String" itemvalue="Application.ByteBuffer" />
       </list>
@@ -1147,6 +1135,9 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -1176,7 +1167,8 @@
       <workItem from="1499658725061" duration="10026000" />
       <workItem from="1499736313396" duration="2334000" />
       <workItem from="1499759175481" duration="1221000" />
-      <workItem from="1499829727672" duration="17058000" />
+      <workItem from="1499829727672" duration="28503000" />
+      <workItem from="1499909421204" duration="6871000" />
     </task>
     <task id="LOCAL-00001" summary="modify some info">
       <created>1498557654072</created>
@@ -1248,11 +1240,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499736355041</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="modify some info">
+      <created>1499848348792</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1499848348792</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168530000" />
+    <option name="totallyTimeSpent" value="186846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1275,21 +1274,21 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30097088" sideWeight="0.50572246" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.105150215" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07361111" sideWeight="0.49427754" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18307906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24749643" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18194444" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18055555" sideWeight="0.49427754" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.847541" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="26" y="108" width="1314" height="511" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.847541" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="255" y="316" width="1314" height="495" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22460657" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2761087" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904148" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23888889" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24166666" sideWeight="0.5065574" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28333333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1336,82 +1335,27 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="89" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sina/test/Test.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="103" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this.hdfsClient.currentTmpFileName" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/KafkaClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/HDFSClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="e#2642#2643#0" expanded="true" />
-            <element signature="e#2716#2717#0" expanded="true" />
-            <element signature="e#2753#2754#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
-            <element signature="e#2965#2966#0" expanded="true" />
-            <element signature="e#3023#3024#0" expanded="true" />
-            <element signature="e#5638#5639#0" expanded="true" />
-            <element signature="e#5696#5697#0" expanded="true" />
-            <element signature="e#10134#10135#0" expanded="true" />
-            <element signature="e#10161#10162#0" expanded="true" />
-            <element signature="e#10208#10209#0" expanded="true" />
-            <element signature="e#10240#10241#0" expanded="true" />
-            <element signature="e#10273#10274#0" expanded="true" />
-            <element signature="e#10298#10299#0" expanded="true" />
-            <element signature="e#10338#10339#0" expanded="true" />
-            <element signature="e#10366#10367#0" expanded="true" />
-            <element signature="e#10409#10410#0" expanded="true" />
-            <element signature="e#10443#10444#0" expanded="true" />
-            <element signature="e#10502#10503#0" expanded="true" />
-            <element signature="e#10548#10549#0" expanded="true" />
-            <element signature="e#10590#10591#0" expanded="true" />
-            <element signature="e#10616#10617#0" expanded="true" />
-            <element signature="e#10666#10667#0" expanded="true" />
-            <element signature="e#10696#10697#0" expanded="true" />
-            <element signature="e#10758#10759#0" expanded="true" />
-            <element signature="e#10812#10813#0" expanded="true" />
-            <element signature="e#10844#10845#0" expanded="true" />
-            <element signature="e#10872#10873#0" expanded="true" />
-            <element signature="e#10914#10915#0" expanded="true" />
-            <element signature="e#10948#10949#0" expanded="true" />
-            <element signature="e#11008#11009#0" expanded="true" />
-            <element signature="e#11060#11061#0" expanded="true" />
-            <element signature="e#11089#11090#0" expanded="true" />
-            <element signature="e#11114#11115#0" expanded="true" />
-            <element signature="e#11150#11151#0" expanded="true" />
-            <element signature="e#11178#11179#0" expanded="true" />
-            <element signature="e#11213#11214#0" expanded="true" />
-            <element signature="e#11244#11245#0" expanded="true" />
-            <element signature="e#11292#11293#0" expanded="true" />
-            <element signature="e#11332#11333#0" expanded="true" />
-            <element signature="e#11370#11371#0" expanded="true" />
-            <element signature="e#11400#11401#0" expanded="true" />
-            <element signature="e#11437#11438#0" expanded="true" />
-            <element signature="e#11468#11469#0" expanded="true" />
-            <element signature="e#11518#11519#0" expanded="true" />
-            <element signature="e#11558#11559#0" expanded="true" />
-            <element signature="e#11592#11593#0" expanded="true" />
-            <element signature="e#11622#11623#0" expanded="true" />
-            <element signature="e#11668#11669#0" expanded="true" />
-            <element signature="e#11706#11707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/conf/hdfs.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/utils/PropertiesUtils.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1499,13 +1443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="134" column="44" lean-forward="false" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadSinkTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1601,21 +1538,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/conf/khsink.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/tools/ByteBuffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#571#572#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.11/0.8.2.1/kafka_2.11-0.8.2.1.jar!/kafka/javaapi/consumer/ConsumerConnector.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1623,22 +1549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="444" column="0" lean-forward="false" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/utils/PropertiesUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="19" column="75" lean-forward="false" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/khsink.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="47" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1650,10 +1560,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/khsink.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/test/Producer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/test/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="55" column="71" lean-forward="true" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
+        <state relative-caret-position="54">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1661,114 +1586,104 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/conf/khsink.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="68" lean-forward="false" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+          <caret line="12" column="49" lean-forward="true" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/utils/PropertiesUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#1077#1078#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/WriteSinkTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+        <state relative-caret-position="-131">
+          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadSinkTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="42" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/test/Producer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/KafkaClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="10">
+          <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/ReadWriteTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="38" column="60" lean-forward="false" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+        <state relative-caret-position="-190">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/Kafka2HDFS.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/tools/ByteBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="49" column="36" lean-forward="false" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        <state relative-caret-position="722">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/khsink.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-common/2.5.0-cdh5.3.2/hadoop-common-2.5.0-cdh5.3.2.jar!/org/apache/hadoop/fs/FileSystem.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="387" column="0" lean-forward="false" selection-start-line="387" selection-start-column="0" selection-end-line="387" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/HDFSClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="973">
-          <caret line="288" column="33" lean-forward="false" selection-start-line="288" selection-start-column="33" selection-end-line="288" selection-end-column="33" />
+        <state relative-caret-position="1187">
+          <caret line="137" column="48" lean-forward="false" selection-start-line="137" selection-start-column="48" selection-end-line="137" selection-end-column="48" />
           <folding>
-            <element signature="e#2642#2643#0" expanded="true" />
-            <element signature="e#2716#2717#0" expanded="true" />
-            <element signature="e#2753#2754#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
-            <element signature="e#2965#2966#0" expanded="true" />
-            <element signature="e#3023#3024#0" expanded="true" />
-            <element signature="e#5638#5639#0" expanded="true" />
-            <element signature="e#5696#5697#0" expanded="true" />
-            <element signature="e#10134#10135#0" expanded="true" />
-            <element signature="e#10161#10162#0" expanded="true" />
-            <element signature="e#10208#10209#0" expanded="true" />
-            <element signature="e#10240#10241#0" expanded="true" />
-            <element signature="e#10273#10274#0" expanded="true" />
-            <element signature="e#10298#10299#0" expanded="true" />
-            <element signature="e#10338#10339#0" expanded="true" />
-            <element signature="e#10366#10367#0" expanded="true" />
-            <element signature="e#10409#10410#0" expanded="true" />
-            <element signature="e#10443#10444#0" expanded="true" />
-            <element signature="e#10502#10503#0" expanded="true" />
-            <element signature="e#10548#10549#0" expanded="true" />
-            <element signature="e#10590#10591#0" expanded="true" />
-            <element signature="e#10616#10617#0" expanded="true" />
-            <element signature="e#10666#10667#0" expanded="true" />
-            <element signature="e#10696#10697#0" expanded="true" />
-            <element signature="e#10758#10759#0" expanded="true" />
-            <element signature="e#10812#10813#0" expanded="true" />
-            <element signature="e#10844#10845#0" expanded="true" />
-            <element signature="e#10872#10873#0" expanded="true" />
-            <element signature="e#10914#10915#0" expanded="true" />
-            <element signature="e#10948#10949#0" expanded="true" />
-            <element signature="e#11008#11009#0" expanded="true" />
-            <element signature="e#11060#11061#0" expanded="true" />
-            <element signature="e#11089#11090#0" expanded="true" />
-            <element signature="e#11114#11115#0" expanded="true" />
-            <element signature="e#11150#11151#0" expanded="true" />
-            <element signature="e#11178#11179#0" expanded="true" />
-            <element signature="e#11213#11214#0" expanded="true" />
-            <element signature="e#11244#11245#0" expanded="true" />
-            <element signature="e#11292#11293#0" expanded="true" />
-            <element signature="e#11332#11333#0" expanded="true" />
-            <element signature="e#11370#11371#0" expanded="true" />
-            <element signature="e#11400#11401#0" expanded="true" />
-            <element signature="e#11437#11438#0" expanded="true" />
-            <element signature="e#11468#11469#0" expanded="true" />
-            <element signature="e#11518#11519#0" expanded="true" />
-            <element signature="e#11558#11559#0" expanded="true" />
-            <element signature="e#11592#11593#0" expanded="true" />
-            <element signature="e#11622#11623#0" expanded="true" />
-            <element signature="e#11668#11669#0" expanded="true" />
-            <element signature="e#11706#11707#0" expanded="true" />
+            <element signature="e#2730#2731#0" expanded="true" />
+            <element signature="e#2804#2805#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/Kafka2HDFS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="47" column="53" lean-forward="false" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="981">
+          <caret line="108" column="14" lean-forward="true" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sina/khsink/KafkaClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-439">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1750#1751#0" expanded="true" />
+            <element signature="e#1795#1796#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1782,7 +1697,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43678162" />
               </list>
             </option>
           </splitter-proportions>
@@ -1806,7 +1721,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43678162" />
               </list>
             </option>
           </splitter-proportions>
@@ -1818,7 +1733,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43678162" />
               </list>
             </option>
           </splitter-proportions>
@@ -1830,7 +1745,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43678162" />
               </list>
             </option>
           </splitter-proportions>
@@ -1838,7 +1753,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: javax.mail:mail:1.4</last-edited>
+          <last-edited>Maven: asm:asm:3.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

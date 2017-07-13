@@ -17,8 +17,6 @@ public class ReadWriteTask {
     private HDFSClient hdfsClient=null;
     private MessageProcess messageProcess=null;
     private int flushSize;
-    private long total;
-    private int count=0;
 
     public ReadWriteTask(){
         init();

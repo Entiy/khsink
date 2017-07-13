@@ -61,14 +61,5 @@ public class ByteBuffer {
         return tmp;
     }
 
-//    public static void main(String[] args) {
-//        ByteBuffer buffer=ByteBuffer.allocate(30);
-//        for (int i = 0; i <7 ; i++) {
-//           int[] ids={i,i,i,i};
-//           buffer.put(ids);
-//        }
-//        System.out.println(Arrays.toString(buffer.array()));
-//
-//    }
 
 }

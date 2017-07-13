@@ -61,7 +61,7 @@ public class WriteSinkTask {
                         }
                         if (total>=200){
                             hdfsClient.flush();
-                            hdfsClient.commit();
+                            //hdfsClient.commit();
                             hdfsClient.close();
                             isStart=true;
                         }
