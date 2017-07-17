@@ -4,15 +4,13 @@ import com.sina.utils.PropertiesUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.IOUtils;
+import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.nio.ByteBuffer;
 import java.util.*;
 
 /**
@@ -38,6 +36,7 @@ public class HDFSClient {
     private int currentMinTh=-1;
     private String currentTmpFileName=null;
     private String currentRealFileName=null;
+    private static final Logger logger=Logger.getLogger(HDFSClient.class);
     public HDFSClient(KafkaClient kafkaClient){
         this.kafkaClient=kafkaClient;
         init();
@@ -56,7 +55,7 @@ public class HDFSClient {
             fs=FileSystem.get(conf);
             recovery();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
     }
 
@@ -69,9 +68,9 @@ public class HDFSClient {
         try {
             out.write(buffer, 0, buffer.length);
             flushAndCommitOffset();
-            System.out.println("Taking "+buffer.length+" bytes from buffer and writing it into HDFS");
+            logger.debug("Taking "+buffer.length+" bytes from buffer and writing it into HDFS");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
 
     }
@@ -81,10 +80,10 @@ public class HDFSClient {
             final Path srcPath = new Path(sourcePath);
             final Path dstPath = new Path(targetPath);
             if (fs.exists(srcPath)) {
-                System.out.println(fs.rename(srcPath,dstPath)?"Rename success":"Rename error");
+                logger.debug(fs.rename(srcPath,dstPath)?"Commit success and Rename success":"Commit failure and Rename error");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
 
     }
@@ -98,7 +97,8 @@ public class HDFSClient {
     }
 
     public String getRealFileNameURI(){
-        return getWriteDir()+"/"+getHadoopLogPath(category.split("/")[4],true,timeZone)[1];
+        String[] strings=getHadoopLogPath(category,true,timeZone);
+        return hdfsURI+strings[0]+strings[1];
     }
 
     public void flush() {
@@ -106,7 +106,7 @@ public class HDFSClient {
             if (out!=null)
                 out.hflush();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
     }
     public void flushAndCommitOffset(){
@@ -125,7 +125,7 @@ public class HDFSClient {
                 kafkaClient.commitOffset();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
     }
 
@@ -160,8 +160,7 @@ public class HDFSClient {
                 delete(maxTmpFilePath);
             }
         } catch (Exception e) {
-            System.exit(0);
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
 
     }
@@ -180,7 +179,7 @@ public class HDFSClient {
                     fs=null;
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error(e,e.fillInStackTrace());
             }
     }
 
@@ -191,7 +190,7 @@ public class HDFSClient {
             if (fs.exists(path))
                 statuses=fs.listStatus(path);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
         return statuses;
     }
@@ -202,7 +201,7 @@ public class HDFSClient {
                 fs.delete(path,false);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
     }
 
@@ -258,12 +257,13 @@ public class HDFSClient {
         realPath.append(year);
         realPath.append("_").append(month);
         realPath.append("_").append(day);
-        realPath.append("/").append(hour);
+        realPath.append("/").append(hour).append("/");
 
         paths[0] = realPath.toString();
 
-
-        realFileName.append(category).append("-")
+        String[] strings=category.split("/");
+        String subCategory=strings[strings.length-1];
+        realFileName.append(subCategory).append("-")
                 .append(ip).append("-")
                 .append(pid).append("-")
                 .append(year).append("_")
@@ -307,7 +307,7 @@ public class HDFSClient {
         try {
             return InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
-            e.printStackTrace();
+            logger.error(e,e.fillInStackTrace());
         }
         return "";
     }
@@ -395,4 +395,6 @@ public class HDFSClient {
     public void setHdfsURI(String hdfsURI) {
         this.hdfsURI = hdfsURI;
     }
+
+
 }

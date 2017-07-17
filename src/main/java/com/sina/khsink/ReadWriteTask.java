@@ -6,6 +6,7 @@ import com.sina.tools.MessageProcessImpl;
 import com.sina.utils.PropertiesUtils;
 import kafka.consumer.ConsumerIterator;
 import kafka.message.MessageAndMetadata;
+import org.apache.log4j.Logger;
 
 
 /**
@@ -17,7 +18,7 @@ public class ReadWriteTask {
     private HDFSClient hdfsClient=null;
     private MessageProcess messageProcess=null;
     private int flushSize;
-
+    private static final Logger logger=Logger.getLogger(ReadWriteTask.class);
     public ReadWriteTask(){
         init();
     }
@@ -45,9 +46,6 @@ public class ReadWriteTask {
                     String topic=messAndMeta.topic();
                     long offset=messAndMeta.offset();
                     int partition=messAndMeta.partition();
-                    //String m="CurrentThread:"+Thread.currentThread().getName()+" topic:"+topic+" key:"+key+" message:"+message+" offset:"+offset+" partition:"+partition;
-                    //System.out.println(m);
-                    //System.out.println("Pulling a message("+message+") from kafka and Putting it into buffer");
                     message= (String) messageProcess.process(message);
                     try {
                         buffer.put(message.getBytes());
@@ -56,14 +54,14 @@ public class ReadWriteTask {
                         buffer.clear();
                         buffer.put(message.getBytes());
                     }
-                    System.out.println("BufferSize: "+buffer.size());
+                    logger.debug("BufferSize: "+buffer.size());
                     if (buffer.size()>=flushSize){
                         hdfsClient.write2HDFS(hdfsClient.getOut(),buffer.array());
                         buffer.clear();
                     }
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e,e.fillInStackTrace());
                 }
             }
         }

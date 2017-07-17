@@ -8,6 +8,7 @@ import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.serializer.StringDecoder;
 import kafka.utils.VerifiableProperties;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,7 @@ public class KafkaClient {
     private ConsumerConfig config=null;
     private ConsumerConnector consumer=null;
     private String topic=null;
+    private static final Logger logger=Logger.getLogger(KafkaClient.class);
     public KafkaClient(){
         init();
     }
