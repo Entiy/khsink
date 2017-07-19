@@ -1,31 +1,29 @@
 package com.sina.tools;
 
 
-import java.util.Arrays;
-
 /**
  * Created by qiangshizhi on 2017/7/6.
  */
-public class ByteBuffer {
+public class ByteBufferPool {
 
 
     private byte[] buf;
     private int capacity;
     private int index;
 
-    private ByteBuffer(int capacity) {
+    private ByteBufferPool(int capacity) {
         if (capacity < 0)
             throw new IllegalArgumentException();
         this.capacity=(int)1.5*capacity;
         this.buf=new byte[this.capacity];
     }
 
-    private ByteBuffer(){
+    private ByteBufferPool(){
         this(Integer.MAX_VALUE);
     }
 
-    public static ByteBuffer allocate(int capacity){
-        return  new ByteBuffer(capacity);
+    public static ByteBufferPool allocate(int capacity){
+        return  new ByteBufferPool(capacity);
     }
 
     // 此方位为native方法。

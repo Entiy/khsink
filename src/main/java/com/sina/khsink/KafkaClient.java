@@ -35,8 +35,8 @@ public class KafkaClient {
     public void init(){
         this.props =PropertiesUtils.properties;
         this.config = new ConsumerConfig(props);
-        this.consumer = Consumer.createJavaConsumerConnector(config);
         this.topic=PropertiesUtils.getString("sink.topic");
+        this.consumer=getConnector();
     }
     public ConsumerIterator<String, String>  consume() {
 
@@ -58,6 +58,14 @@ public class KafkaClient {
         consumer.commitOffsets(false);
     }
 
+    public ConsumerConnector getConnector(){
+        try{
+             return Consumer.createJavaConsumerConnector(config);
+        }catch (Exception e){
+            logger.error("Unable to connect to zookeeper server within timeout: 6000 then try again......");
+
+        }
+    }
     public Properties getProps() {
         return props;
     }

@@ -36,7 +36,9 @@ public class HDFSClient {
     private int currentMinTh=-1;
     private String currentTmpFileName=null;
     private String currentRealFileName=null;
+    private int minutes=0;
     private static final Logger logger=Logger.getLogger(HDFSClient.class);
+
     public HDFSClient(KafkaClient kafkaClient){
         this.kafkaClient=kafkaClient;
         init();
@@ -49,6 +51,7 @@ public class HDFSClient {
             timeZone =TimeZone.getTimeZone("Asia/Shanghai");
             ip=getIpAddress();
             pid=getPid();
+            minutes=Integer.parseInt(PropertiesUtils.getString("minute.size"));
             category=PropertiesUtils.getString("category.dir");
             conf=new Configuration();
             conf.set("fs.default.name",hdfsURI);
@@ -56,6 +59,8 @@ public class HDFSClient {
             recovery();
         } catch (IOException e) {
             logger.error(e,e.fillInStackTrace());
+            logger.error("Creating filesystem failure and program exit ");
+            System.exit(0);
         }
     }
 
@@ -120,7 +125,7 @@ public class HDFSClient {
                 currentTmpFileName=currentRealFileName+"-tmp";
                 out=fs.create(new Path(currentTmpFileName));
                 currentMinTh=getMinTh(timeZone);
-            } else{
+            }else{
                 flush();
                 kafkaClient.commitOffset();
             }
@@ -239,7 +244,7 @@ public class HDFSClient {
         String month = convertInt2StrFormatter(calendar.get(Calendar.MONTH) + 1);
         String day = convertInt2StrFormatter(calendar.get(Calendar.DAY_OF_MONTH));
         String hour = convertInt2StrFormatter(calendar.get(Calendar.HOUR_OF_DAY));
-        int minf = calendar.get(Calendar.MINUTE)/10+calendar.get(Calendar.HOUR_OF_DAY)*6;
+        int minf = calendar.get(Calendar.MINUTE)/minutes+calendar.get(Calendar.HOUR_OF_DAY)*(60/minutes);
         String minfStr = String.valueOf(minf);
         if(minf>=0&&minf<10){
             minfStr = "00"+minfStr;
@@ -283,7 +288,7 @@ public class HDFSClient {
         }else{
             calendar = Calendar.getInstance(timeZone);
         }
-        int minTh= calendar.get(Calendar.MINUTE)/10+calendar.get(Calendar.HOUR_OF_DAY)*6;
+        int minTh= calendar.get(Calendar.MINUTE)/minutes+calendar.get(Calendar.HOUR_OF_DAY)*(60/minutes);
         return minTh;
     }
 

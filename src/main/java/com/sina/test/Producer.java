@@ -13,12 +13,12 @@ public class Producer {
     private boolean flag;
 
     public static void main(String[] args) {
-        producer();
+        producer(args[0]);
 //        new Producer().run();
     }
 
 
-    public static void producer() {
+    public static void producer(String topic) {
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "10.13.4.44:9092");
         properties.put("metadata.broker.list", "10.13.4.44:9092");
@@ -29,7 +29,7 @@ public class Producer {
         KafkaProducer<Integer, String> producer = new KafkaProducer<Integer, String>(properties);
         for (int iCount = 0; iCount < 20000000; iCount++) {
             String message = "message  " + iCount;
-            ProducerRecord<Integer, String> record = new ProducerRecord<Integer, String>("t001", message);
+            ProducerRecord<Integer, String> record = new ProducerRecord<Integer, String>(topic, message);
             producer.send(record);
         }
         producer.close();

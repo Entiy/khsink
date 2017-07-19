@@ -1,6 +1,6 @@
 package com.sina.khsink;
 
-import com.sina.tools.ByteBuffer;
+import com.sina.tools.ByteBufferPool;
 import com.sina.tools.MessageProcess;
 import com.sina.tools.MessageProcessImpl;
 import com.sina.utils.PropertiesUtils;
@@ -34,12 +34,16 @@ public class ReadWriteTask {
         readAndWrite();
     }
 
+    //长时间不消费，不让程序退出
+    //关闭所有连接
+    //过一段时间重新连接消费，如果还没有数据消费，继续轮询。
+    //查看kafka consumer的具体过程
     public void readAndWrite(){
         ConsumerIterator<String, String> it=kafkaClient.consume();
         boolean running=true;
-        ByteBuffer buffer= ByteBuffer.allocate(flushSize);
+        ByteBufferPool buffer= ByteBufferPool.allocate(flushSize);
         while (it.hasNext()&&running){
-                try {
+               // try {
                     MessageAndMetadata<String,String> messAndMeta=it.next();
                     String message=messAndMeta.message();
                     String key=messAndMeta.key();
@@ -54,15 +58,15 @@ public class ReadWriteTask {
                         buffer.clear();
                         buffer.put(message.getBytes());
                     }
-                    logger.debug("BufferSize: "+buffer.size());
                     if (buffer.size()>=flushSize){
                         hdfsClient.write2HDFS(hdfsClient.getOut(),buffer.array());
                         buffer.clear();
                     }
 
-                } catch (Exception e) {
-                    logger.error(e,e.fillInStackTrace());
-                }
+//                } catch (Exception e) {
+//                    logger.debug("are you ok？");
+//                    logger.error(e,e.fillInStackTrace());
+//                }
             }
         }
     }
